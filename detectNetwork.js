@@ -8,13 +8,25 @@
 //   2. The number of digits in the number (called the length)
 
 var detectNetwork = function(cardNumber) {
-  const prefix = cardNumber.slice(0, 2);
+  const preTwo = parseInt(cardNumber.slice(0, 2));
+  const preThree = parseInt(cardNumber.slice(0, 3));
+  const preFour = parseInt(cardNumber.slice(0, 4));
   const length = cardNumber.length;
 
-  const dinerClub = (prefix === '38' || prefix === '39') && length === 14;
-  const amex = (prefix === '34' || prefix === '37') && length === 15;
+  const dinerClub = (preTwo === 38 || preTwo === 39) && length === 14;
+
+  const amex = (preTwo === 34 || preTwo === 37) && length === 15;
+
   const visa = cardNumber.slice(0, 1) === '4' && (length === 13 || length === 16 || length === 19);
-  const masterCard = (parseInt(prefix) >= 51 && parseInt(prefix) <= 55) && length === 16;
+
+  const masterCard = (preTwo >= 51 && preTwo <= 55) && length === 16;
+
+  const discover = (preFour === 6011 || preTwo === 65
+                    || (preThree >= 644 && preThree <= 649))
+                    && (length === 16 || length === 19);
+
+  const maestro = (preFour === 5018 || preFour === 5020 || preFour === 5038 || preFour === 6304)
+                  && (length >= 12 && length <= 19);
 
   let cardName;
 
@@ -22,6 +34,8 @@ var detectNetwork = function(cardNumber) {
   if (amex) cardName = 'American Express';
   if (visa) cardName = 'Visa';
   if (masterCard) cardName = 'MasterCard';
+  if (discover) cardName = 'Discover';
+  if (maestro) cardName = 'Maestro';
 
   return cardName;
   // Note: `cardNumber` will always be a string
