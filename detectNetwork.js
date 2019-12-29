@@ -9,18 +9,24 @@
 
 var detectNetwork = function(cardNumber) {
   const prefix = cardNumber.slice(0, 2);
-  const dinerClub = (prefix === '38' || prefix === '39') && cardNumber.length === 14;
-  const amex = (prefix === '34' || prefix === '37') && cardNumber.length === 15;
+  const length = cardNumber.length;
+
+  const dinerClub = (prefix === '38' || prefix === '39') && length === 14;
+  const amex = (prefix === '34' || prefix === '37') && length === 15;
+  const visa = cardNumber.slice(0, 1) === '4' && (length === 13 || length === 16 || length === 19);
+  const masterCard = (parseInt(prefix) >= 51 && parseInt(prefix) <= 55) && length === 16;
+
   let cardName;
 
   if (dinerClub) cardName = 'Diner\'s Club';
   if (amex) cardName = 'American Express';
+  if (visa) cardName = 'Visa';
+  if (masterCard) cardName = 'MasterCard';
 
   return cardName;
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long
-
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 };
 
