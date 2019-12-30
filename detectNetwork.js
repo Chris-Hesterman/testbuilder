@@ -43,11 +43,10 @@ var detectNetwork = function(cardNumber) {
                   &&
                   (length >= 12 && length <= 19);
 
-  const chinaUnion = ((preSix >= 622126 && preSix <= 622925)
+  const chinaUnion = (length >= 16 && length <= 19)
+                      && ((preSix >= 622126 && preSix <= 622925)
                       || (preThree >= 624 && preThree <= 626)
                       || (preFour >= 6282 && preFour <= 6288))
-                      &&
-                      (length >= 16 && length <= 19);
 
   const switchCard = (preFour === 4903
                     || preFour === 4905
@@ -70,6 +69,8 @@ var detectNetwork = function(cardNumber) {
   if (masterCard) cardName = 'MasterCard';
   if (discover) cardName = 'Discover';
   if (maestro) cardName = 'Maestro';
+  if (chinaUnion) cardName = 'China UnionPay';
+  if (switchCard) cardName = 'Switch';
 
   return cardName;
   // Note: `cardNumber` will always be a string
