@@ -65,7 +65,7 @@ var detectNetwork = function(cardNumber) {
 
   if (dinerClub) cardName = 'Diner\'s Club';
   if (amex) cardName = 'American Express';
-  if (visa) cardName = 'Visa';
+  if (visa === true && switchCard !== true) cardName = 'Visa';
   if (masterCard) cardName = 'MasterCard';
   if (discover) cardName = 'Discover';
   if (maestro) cardName = 'Maestro';
