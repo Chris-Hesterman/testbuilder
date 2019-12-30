@@ -95,6 +95,7 @@ describe('MasterCard', function() {
   // Expect syntax is one way to do this, but there are others.
   // If you want to know more, check out the documentation.
   //   http://chaijs.com/api/bdd/
+  // http://chaijs.com/guide/styles/ for more info
   var should = chai.should();
 
   it('has a prefix of 51 and a length of 16', function() {
@@ -108,16 +109,6 @@ describe('MasterCard', function() {
   it('has a prefix of 53 and a length of 16', function() {
     (detectNetwork('5312345678901234')).should.equal('MasterCard');
   });
-
-
-  // You can also use should instead of expect, which changes the style
-  // slightly. It really doesn't matter which one you use - check out
-  // http://chaijs.com/guide/styles/ for more info, but it's important
-  // to be consistent (unlike in this file, where we use BOTH expect
-  // and should, but that's just for learning), so once you've gotten
-  // these tests to pass using should syntax, refactor your tests to
-  // use either expect or should, but not both.
-  var should = chai.should();
 
   it('has a prefix of 54 and a length of 16', function() {
     detectNetwork('5412345678901234').should.equal('MasterCard');
@@ -358,6 +349,107 @@ describe('China UnionPay', function() {
       detectNetwork(`${prefFour}364819675364`).should.equal('China UnionPay');
     });
   }
+});
 
+describe('Switch', function() {
+  var should = chai.should();
+
+  it('has a prefix of 4903 and a length of 16', function() {
+    detectNetwork('4903756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 4905 and a length of 16', function() {
+    detectNetwork('4905756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 4911 and a length of 16', function() {
+    detectNetwork('4911756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 4936 and a length of 16', function() {
+    detectNetwork('4936756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 6333 and a length of 16', function() {
+    detectNetwork('6333756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 6759 and a length of 16', function() {
+    detectNetwork('6759756487365498').should.equal('Switch');
+  });
+
+  it('has a prefix of 564182 and a length of 16', function() {
+    detectNetwork('5641827564873654').should.equal('Switch');
+  });
+
+  it('has a prefix of 633110 and a length of 16', function() {
+    detectNetwork('4903756487365498').should.equal('Switch');
+  });
+
+  // length 18
+  it('has a prefix of 4903 and a length of 18', function() {
+    detectNetwork('490375648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 4905 and a length of 18', function() {
+    detectNetwork('490575648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 4911 and a length of 18', function() {
+    detectNetwork('491175648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 4936 and a length of 18', function() {
+    detectNetwork('493675648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 6333 and a length of 18', function() {
+    detectNetwork('633375648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 6759 and a length of 18', function() {
+    detectNetwork('675975648736549834').should.equal('Switch');
+  });
+
+  it('has a prefix of 564182 and a length of 18', function() {
+    detectNetwork('564182756487365434').should.equal('Switch');
+  });
+
+  it('has a prefix of 633110 and a length of 18', function() {
+    detectNetwork('633110756487365498').should.equal('Switch');
+  });
+
+  //length 19
+  it('has a prefix of 4903 and a length of 19', function() {
+    detectNetwork('4903756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 4905 and a length of 19', function() {
+    detectNetwork('4905756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 4911 and a length of 19', function() {
+    detectNetwork('4911756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 4936 and a length of 19', function() {
+    detectNetwork('4936756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 6333 and a length of 19', function() {
+    detectNetwork('6333756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 6759 and a length of 19', function() {
+    detectNetwork('6759756487365498345').should.equal('Switch');
+  });
+
+  it('has a prefix of 564182 and a length of 19', function() {
+    detectNetwork('5641827564873654345').should.equal('Switch');
+  });
+
+  it('has a prefix of 633110 and a length of 19', function() {
+    detectNetwork('4903756487365498789').should.equal('Switch');
+  });
 });
 
