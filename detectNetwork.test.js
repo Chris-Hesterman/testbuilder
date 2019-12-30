@@ -335,24 +335,24 @@ describe('Maestro', function() {
 describe('China UnionPay', function() {
   var should = chai.should();
 
-  for (let i = 0; i < 799; i++) {
-    const prefSix = 622126 + i;
+  for (let i = 0; i < 800; i++) {
+    const prefSix = (622126 + i).toString();
 
     it(`has a prefix of ${prefSix} and a length of 16`, function() {
-      detectNetwork(`${prefSix}3726485746`).should.equal('China UnionPay')
+      detectNetwork(`${prefSix}1234567893`).should.equal('China UnionPay');
     });
   }
 
   for (let j = 0; j < 3; j++) {
-    const prefThree = 624 + i;
+    const prefThree = (624 + j).toString();
 
     it(`has a prefix of ${prefThree} and a length of 16`, function() {
-      detectNetwork(`${prefThree}3648196753648`).should.equal('China UnionPay');
+      detectNetwork(`${prefThree}3756492089563`).should.equal('China UnionPay');
     });
   }
 
-  for (let k = 0; k < 6; k++) {
-    const prefFour = 6282 + i;
+  for (let k = 0; k < 7; k++) {
+    const prefFour = (6282 + k).toString();
 
     it(`has a prefix of ${prefFour} and a length of 16`, function() {
       detectNetwork(`${prefFour}364819675364`).should.equal('China UnionPay');
