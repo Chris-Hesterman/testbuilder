@@ -201,6 +201,7 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   var should = chai.should();
+
   it('has a prefix of 5018 and a length of 12', function() {
     detectNetwork('501845639757').should.equal('Maestro');
   });
@@ -328,6 +329,35 @@ describe('Maestro', function() {
   it('has a prefix of 6304 and a length of 19', function() {
     detectNetwork('6304456397574528765').should.equal('Maestro');
   });
+
+});
+
+describe('China UnionPay', function() {
+  var should = chai.should();
+
+  for (let i = 0; i < 799; i++) {
+    const prefSix = 622126 + i;
+
+    it(`has a prefix of ${prefSix} and a length of 16`, function() {
+      detectNetwork(`${prefSix}3726485746`).should.equal('China UnionPay')
+    });
+  }
+
+  for (let j = 0; j < 3; j++) {
+    const prefThree = 624 + i;
+
+    it(`has a prefix of ${prefThree} and a length of 16`, function() {
+      detectNetwork(`${prefThree}3648196753648`).should.equal('China UnionPay');
+    });
+  }
+
+  for (let k = 0; k < 6; k++) {
+    const prefFour = 6282 + i;
+
+    it(`has a prefix of ${prefFour} and a length of 16`, function() {
+      detectNetwork(`${prefFour}364819675364`).should.equal('China UnionPay');
+    });
+  }
 
 });
 
