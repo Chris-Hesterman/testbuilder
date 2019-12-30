@@ -8,25 +8,59 @@
 //   2. The number of digits in the number (called the length)
 
 var detectNetwork = function(cardNumber) {
+  const preOne = parseInt(cardNumber.slice(0, 1));
   const preTwo = parseInt(cardNumber.slice(0, 2));
   const preThree = parseInt(cardNumber.slice(0, 3));
   const preFour = parseInt(cardNumber.slice(0, 4));
+  const preSix = parseInt(cardNumber.slice(0, 6));
   const length = cardNumber.length;
 
-  const dinerClub = (preTwo === 38 || preTwo === 39) && length === 14;
+  const dinerClub = (preTwo === 38 || preTwo === 39)
+                    && length === 14;
 
-  const amex = (preTwo === 34 || preTwo === 37) && length === 15;
+  const amex = (preTwo === 34 || preTwo === 37)
+                && length === 15;
 
-  const visa = cardNumber.slice(0, 1) === '4' && (length === 13 || length === 16 || length === 19);
+  const visa = preOne === 4
+              &&
+              (length === 13
+              || length === 16
+              || length === 19);
 
-  const masterCard = (preTwo >= 51 && preTwo <= 55) && length === 16;
+  const masterCard = (preTwo >= 51 && preTwo <= 55)
+                      && length === 16;
 
-  const discover = (preFour === 6011 || preTwo === 65
+  const discover = (preFour === 6011
+                    || preTwo === 65
                     || (preThree >= 644 && preThree <= 649))
-                    && (length === 16 || length === 19);
+                    &&
+                    (length === 16 || length === 19);
 
-  const maestro = (preFour === 5018 || preFour === 5020 || preFour === 5038 || preFour === 6304)
-                  && (length >= 12 && length <= 19);
+  const maestro = (preFour === 5018
+                  || preFour === 5020
+                  || preFour === 5038
+                  || preFour === 6304)
+                  &&
+                  (length >= 12 && length <= 19);
+
+  const chinaUnion = ((preSix >= 622126 && preSix <= 622925)
+                      || (preThree >= 624 && preThree <= 626)
+                      || (preFour >= 6282 && preFour <= 6288))
+                      &&
+                      (length >= 16 && length <= 19);
+
+  const switchCard = (preFour === 4903
+                    || preFour === 4905
+                    || preFour === 4911
+                    || preFour === 4936
+                    || preFour === 6333
+                    || preFour === 6759
+                    || preSix === 564182
+                    || preSix === 633110)
+                    &&
+                    (length === 16
+                    ||length === 18
+                    ||length === 19)
 
   let cardName;
 
