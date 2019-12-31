@@ -343,104 +343,62 @@ describe('China UnionPay', function() {
   var should = chai.should();
 
   for (let i = 0; i < 800; i++) {
-    const prefSix = (622126 + i).toString();
+    const prefSix = (622126 + i);
 
-    it(`has a prefix of ${prefSix} and a length of 16`, function() {
-      detectNetwork(`${prefSix}1234567893`).should.equal('China UnionPay');
-    });
+    (function(prefSix) {
+      it(`has a prefix of ${prefSix} and a length of 16`, function() {
+        detectNetwork(`${prefSix}1234567893`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefSix} and a length of 17`, function() {
+        detectNetwork(`${prefSix}12345678936`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefSix} and a length of 18`, function() {
+        detectNetwork(`${prefSix}123456789388`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefSix} and a length of 19`, function() {
+        detectNetwork(`${prefSix}1234567893889`).should.equal('China UnionPay');
+      });
+    })(prefSix);
   }
 
   for (let j = 0; j < 3; j++) {
-    const prefThree = (624 + j).toString();
+    const prefThree = (624 + j);
 
-    it(`has a prefix of ${prefThree} and a length of 16`, function() {
-      detectNetwork(`${prefThree}3756492089563`).should.equal('China UnionPay');
-    });
+    (function(prefThree) {
+      it(`has a prefix of ${prefThree} and a length of 16`, function() {
+        detectNetwork(`${prefThree}3756492089563`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefThree} and a length of 17`, function() {
+        detectNetwork(`${prefThree}37564920895636`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefThree} and a length of 18`, function() {
+        detectNetwork(`${prefThree}375649208956388`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefThree} and a length of 19`, function() {
+        detectNetwork(`${prefThree}3756492089563889`).should.equal('China UnionPay');
+      });
+    })(prefThree);
   }
 
   for (let k = 0; k < 7; k++) {
-    const prefFour = (6282 + k).toString();
+    const prefFour = (6282 + k);
 
-    it(`has a prefix of ${prefFour} and a length of 16`, function() {
-      detectNetwork(`${prefFour}364819675364`).should.equal('China UnionPay');
-    });
+    (function(prefFour) {
+      it(`has a prefix of ${prefFour} and a length of 16`, function() {
+        detectNetwork(`${prefFour}364819675364`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefFour} and a length of 17`, function() {
+        detectNetwork(`${prefFour}3648196753646`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefFour} and a length of 18`, function() {
+        detectNetwork(`${prefFour}36481967536488`).should.equal('China UnionPay');
+      });
+      it(`has a prefix of ${prefFour} and a length of 19`, function() {
+        detectNetwork(`${prefFour}364819675364889`).should.equal('China UnionPay');
+      });
+    })(prefFour);
   }
 
-
-  //length 17
-  for (let i = 0; i < 800; i++) {
-    const prefSix = (622126 + i).toString();
-
-    it(`has a prefix of ${prefSix} and a length of 17`, function() {
-      detectNetwork(`${prefSix}12345678936`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let j = 0; j < 3; j++) {
-    const prefThree = (624 + j).toString();
-
-    it(`has a prefix of ${prefThree} and a length of 17`, function() {
-      detectNetwork(`${prefThree}37564920895636`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let k = 0; k < 7; k++) {
-    const prefFour = (6282 + k).toString();
-
-    it(`has a prefix of ${prefFour} and a length of 17`, function() {
-      detectNetwork(`${prefFour}3648196753646`).should.equal('China UnionPay');
-    });
-  }
-
-  //length 18
-  for (let i = 0; i < 800; i++) {
-    const prefSix = (622126 + i).toString();
-
-    it(`has a prefix of ${prefSix} and a length of 18`, function() {
-      detectNetwork(`${prefSix}123456789388`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let j = 0; j < 3; j++) {
-    const prefThree = (624 + j).toString();
-
-    it(`has a prefix of ${prefThree} and a length of 18`, function() {
-      detectNetwork(`${prefThree}375649208956388`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let k = 0; k < 7; k++) {
-    const prefFour = (6282 + k).toString();
-
-    it(`has a prefix of ${prefFour} and a length of 18`, function() {
-      detectNetwork(`${prefFour}36481967536488`).should.equal('China UnionPay');
-    });
-  }
-
-  //length 19
-  for (let i = 0; i < 800; i++) {
-    const prefSix = (622126 + i).toString();
-
-    it(`has a prefix of ${prefSix} and a length of 19`, function() {
-      detectNetwork(`${prefSix}1234567893889`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let j = 0; j < 3; j++) {
-    const prefThree = (624 + j).toString();
-
-    it(`has a prefix of ${prefThree} and a length of 19`, function() {
-      detectNetwork(`${prefThree}3756492089563889`).should.equal('China UnionPay');
-    });
-  }
-
-  for (let k = 0; k < 7; k++) {
-    const prefFour = (6282 + k).toString();
-
-    it(`has a prefix of ${prefFour} and a length of 19`, function() {
-      detectNetwork(`${prefFour}364819675364889`).should.equal('China UnionPay');
-    });
-  }
 });
 
 describe('Switch', function() {
