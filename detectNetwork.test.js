@@ -124,7 +124,6 @@ describe('MasterCard', function() {
   // it('has a prefix of 55 and a length of 16', function() {
   //   detectNetwork('5512345678901234').should.equal('MasterCard');
   // });
-
 });
 
 describe('Discover', function() {
@@ -147,53 +146,63 @@ describe('Discover', function() {
     detectNetwork('6547389452968646354').should.equal('Discover');
   });
 
-  it('has a prefix of 644 and a length of 16', function() {
-    detectNetwork('6447389452968646').should.equal('Discover');
-  });
+  for (let prefix = 644; prefix <= 649; prefix++) {
+    (function(prefix) {
+      it(`has a prefix of ${prefix} and a length of 16`, function() {
+        detectNetwork(`${prefix}4765389572876`).should.equal('Discover');
+      });
+      it(`has a prefix of ${prefix} and a length of 19`, function() {
+        detectNetwork(`${prefix}2658652987009845`).should.equal('Discover');
+      });
+    })(prefix);
+  }
+  // it('has a prefix of 644 and a length of 16', function() {
+  //   detectNetwork('6447389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 645 and a length of 16', function() {
-    detectNetwork('6457389452968646').should.equal('Discover');
-  });
+  // it('has a prefix of 645 and a length of 16', function() {
+  //   detectNetwork('6457389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 646 and a length of 16', function() {
-    detectNetwork('6467389452968646').should.equal('Discover');
-  });
+  // it('has a prefix of 646 and a length of 16', function() {
+  //   detectNetwork('6467389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 647 and a length of 16', function() {
-    detectNetwork('6477389452968646').should.equal('Discover');
-  });
+  // it('has a prefix of 647 and a length of 16', function() {
+  //   detectNetwork('6477389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 648 and a length of 16', function() {
-    detectNetwork('6487389452968646').should.equal('Discover');
-  });
+  // it('has a prefix of 648 and a length of 16', function() {
+  //   detectNetwork('6487389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 649 and a length of 16', function() {
-    detectNetwork('6497389452968646').should.equal('Discover');
-  });
+  // it('has a prefix of 649 and a length of 16', function() {
+  //   detectNetwork('6497389452968646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 644 and a length of 19', function() {
-    detectNetwork('6447389452968646473').should.equal('Discover');
-  });
+  // it('has a prefix of 644 and a length of 19', function() {
+  //   detectNetwork('6447389452968646473').should.equal('Discover');
+  // });
 
-  it('has a prefix of 645 and a length of 19', function() {
-    detectNetwork('6457389452968646428').should.equal('Discover');
-  });
+  // it('has a prefix of 645 and a length of 19', function() {
+  //   detectNetwork('6457389452968646428').should.equal('Discover');
+  // });
 
-  it('has a prefix of 646 and a length of 19', function() {
-    detectNetwork('6467389452968646385').should.equal('Discover');
-  });
+  // it('has a prefix of 646 and a length of 19', function() {
+  //   detectNetwork('6467389452968646385').should.equal('Discover');
+  // });
 
-  it('has a prefix of 647 and a length of 19', function() {
-    detectNetwork('6477389452968437646').should.equal('Discover');
-  });
+  // it('has a prefix of 647 and a length of 19', function() {
+  //   detectNetwork('6477389452968437646').should.equal('Discover');
+  // });
 
-  it('has a prefix of 648 and a length of 19', function() {
-    detectNetwork('6487389452968636546').should.equal('Discover');
-  });
+  // it('has a prefix of 648 and a length of 19', function() {
+  //   detectNetwork('6487389452968636546').should.equal('Discover');
+  // });
 
-  it('has a prefix of 649 and a length of 119', function() {
-    detectNetwork('6497389452968646254').should.equal('Discover');
-  });
+  // it('has a prefix of 649 and a length of 19', function() {
+  //   detectNetwork('6497389452968646254').should.equal('Discover');
+  // });
 
 });
 
