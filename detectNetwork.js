@@ -58,14 +58,30 @@ var detectNetwork = function(cardNumber) {
 
   let cardName;
 
-  if (dinerClub) {cardName = "Diner's Club"};
-  if (amex) cardName = {'American Express'};
-  if (visa === true && switchCard !== true) {cardName = 'Visa'};
-  if (masterCard) {cardName = 'MasterCard'};
-  if (discover) {cardName = 'Discover'};
-  if (maestro) {cardName = 'Maestro'};
-  if (chinaUnion) {cardName = 'China UnionPay'};
-  if (switchCard) {cardName = 'Switch'};
+  if (dinerClub) {
+    cardName = "Diner's Club";
+  }
+  if (amex) {
+    cardName = 'American Express';
+  }
+  if (visa === true && switchCard !== true) {
+    cardName = 'Visa';
+  }
+  if (masterCard) {
+    cardName = 'MasterCard';
+  }
+  if (discover) {
+    cardName = 'Discover';
+  }
+  if (maestro) {
+    cardName = 'Maestro';
+  }
+  if (chinaUnion) {
+    cardName = 'China UnionPay';
+  }
+  if (switchCard) {
+    cardName = 'Switch';
+  }
 
   return cardName;
   // Note: `cardNumber` will always be a string
